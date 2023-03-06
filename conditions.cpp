@@ -1,5 +1,4 @@
 Conditions::Conditions(const vector<int> & v, const vector<int> & w, int K) {
-	m_v = v;
 	m_w = w;
 	m_k = K;
 }
