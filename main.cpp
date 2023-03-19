@@ -1,6 +1,5 @@
 #include "conditions.h"
-//#include "knapsack.h"
-//#include "solver.h"
+#include "solver.h"
 // read conditions
 // 		Knapsack
 // solve the problem
@@ -38,14 +37,9 @@ int main() {
 	conditions the_cond(v, w, K);
 
 	solver the_sol(the_cond);
-	//the_solver.solve();
+	the_solver.solve();
 
-	/*vector<int>& solution = the_solver.solution();
-	cout << the_solver.answer() << 0 << endl;
-	for (int i = 0; i < n; i++) {
-		cout << solution[i] << endl;
-	}*/
-
+	the_solver.answer();
 
 	return 0;
 }

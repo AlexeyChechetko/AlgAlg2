@@ -5,11 +5,14 @@
 
 class conditions {
 	public:
-		conditions(const vector<int>& v, const vector<int>& w, const int K);
+		conditions(const vector<int>& c, const vector<int>& w, const int K_W);
+		int get_n();
+		int get_K_W();
+		vector<int> get_c();
 	private:
-		vector<int> v;
+		vector<int> c;
 		vector<int> w;
-		int K;
+		int K_W;
 };
 
 #endif

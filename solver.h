@@ -10,6 +10,10 @@ class solver {
 	const vector<int>&  solution();
 
     private:
+	vector<int> K;
+	bool* inc;
+	int n;
+	int summ;
 			 			
 };
 #endif
