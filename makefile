@@ -1,10 +1,7 @@
-all:  main.o knapsack.o solver.o conditions.o
-	g++ -o knapsack main.o knapsack.o solver.o conditions.o
-main.o: main.cpp knapsack.h solver.h conditions.h 
+all:  main.o solver.o conditions.o
+	g++ -o knapsack main.o solver.o conditions.o
+main.o: main.cpp solver.h conditions.h 
 	g++ -c main.cpp
-
-knapsack.o: knapsack.cpp knapsack.h
-	g++ -c knapsack.cpp
 
 solver.o: solver.cpp solver.h
 	g++ -c solver.cpp

@@ -24,10 +24,10 @@ int main() {
 
 	vector<int> v; //вектор ценностей
 	vector<int> w;//вектор весов
-	int W; //максимально допустимый вес
+	int K; //максимально допустимый вес
 	int n;
 	
-	cin >> n >> W;
+	cin >> n >> K;
 	v.resize(n);
 	w.resize(n);
 	for (int i = 0; i < n; i++) {
@@ -37,9 +37,9 @@ int main() {
 	conditions the_cond(v, w, K);
 
 	solver the_sol(the_cond);
-	the_solver.solve();
+	the_sol.solve();
 
-	the_solver.answer();
+	the_sol.answer();
 
 	return 0;
 }

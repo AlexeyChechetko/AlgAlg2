@@ -1,4 +1,5 @@
 #include "solver.h"
+using namespace std;
 
 solver::solver(const conditions& cond) {
 	K.resize(cond.get_K_W() + 1);

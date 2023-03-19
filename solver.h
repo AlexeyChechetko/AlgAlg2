@@ -1,4 +1,5 @@
 #include "conditions.h"
+using namespace std;
 
 #ifndef _solver_h_
 #define _solver_h_

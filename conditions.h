@@ -2,6 +2,7 @@
 #define CONDITIONS_H_INCLUDED
 
 #include <vector>
+using namespace std;
 
 class conditions {
 	public:
