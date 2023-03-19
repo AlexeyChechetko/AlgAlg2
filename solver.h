@@ -2,9 +2,9 @@
 
 #ifndef _solver_h_
 #define _solver_h_
-class Solver {
+class solver {
     public:
-	Solver(const Condition& c);
+	solver(const conditions& cond);
 	void solve();
 	int answer();
 	const vector<int>&  solution();
