@@ -3,9 +3,9 @@
 
 #include <vector>
 
-class Conditions {
+class conditions {
 	public:
-		Conditions(const vector<int>& v, const vector<int>& w, const int K);
+		conditions(const vector<int>& v, const vector<int>& w, const int K);
 	private:
 		vector<int> v;
 		vector<int> w;

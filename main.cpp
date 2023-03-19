@@ -1,6 +1,6 @@
 #include "conditions.h"
-#include "knapsack.h"
-#include "solver.h"
+//#include "knapsack.h"
+//#include "solver.h"
 // read conditions
 // 		Knapsack
 // solve the problem
@@ -18,29 +18,33 @@
 using namespace std;
 
 int main() {
-	vector<int> v; 
-	vector<int> w;
-	int K;
+
+
+	freopen("./input_knapsack/input1", "r", stdin);
+
+
+	vector<int> v; //вектор ценностей
+	vector<int> w;//вектор весов
+	int W; //максимально допустимый вес
 	int n;
 	
-	cin >> n;
-	cin >> k;
+	cin >> n >> W;
 	v.resize(n);
 	w.resize(n);
 	for (int i = 0; i < n; i++) {
-		cin >> v[i];
-		cin >> w[i];
+		cin >> v[i] >> w[i];
 	}
 
-	Conditions the_cond(v, w, K);
-	Solver the_solver(cond);
-	the_solver.solve();
+	conditions the_cond(v, w, K);
 
-	vector<int>& solution = the_solver.solution();
+	solver the_sol(the_cond);
+	//the_solver.solve();
+
+	/*vector<int>& solution = the_solver.solution();
 	cout << the_solver.answer() << 0 << endl;
 	for (int i = 0; i < n; i++) {
 		cout << solution[i] << endl;
-	}
+	}*/
 
 
 	return 0;
