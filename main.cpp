@@ -1,4 +1,6 @@
 #include "conditions.h"
+#include "knapsack.h"
+#include "solver.h"
 #include <vector>
 #include <iostream>
 
@@ -10,19 +12,20 @@ int main() {
 	freopen("./input_knapsack/input1", "r", stdin);
 
 
-	vector<int> v; //вектор ценностей
-	vector<int> w; //вектор весов
-	int K;         //максимально допустимый вес
+	vector<int> c; //вектор ценностей
+	vector<int> p; //вектор весов
+	int K_P;       //максимально допустимый вес
 	int n;         //размер входных данных(сколько товаров в магазине)
-	/////////////efijogeijghetgho
-	cin >> n >> K;
-	v.resize(n);
-	w.resize(n);
+	
+	cin >> n >> K_P;
+	c.resize(n);
+	p.resize(n);
 	for (int i = 0; i < n; i++) {
-		cin >> v[i] >> w[i];
+		cin >> c[i] >> p[i];
 	}
 
-	conditions the_cond(v, w, K);
+
+	solver S(c, p, K_P, n);
 
 	return 0;
 }

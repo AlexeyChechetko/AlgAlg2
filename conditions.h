@@ -7,11 +7,12 @@ using namespace std;
 
 class conditions {
 	public:
-		conditions(const vector<int>& c, const vector<int>& w, const int K_W);
+		conditions(const vector<int>& c, const vector<int>& p, const int K_P, const int n);
 	private:
 		vector<int> c;
-		vector<int> w;
-		int K_W;
+		vector<int> p;
+		int K_P;
+		int n;
 };
 
 #endif

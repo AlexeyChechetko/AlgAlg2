@@ -2,12 +2,13 @@
 
 using namespace std;
 
-conditions::conditions(const vector<int>& c, const vector<int>& w, const int K_W)
+conditions::conditions(const vector<int>& c, const vector<int>& p, const int K_P, const int n)
 {
 
 	this -> c = c;
-	this -> w = w;
-	this -> K_W = K_W; 	
+	this -> p = p;
+	this -> K_P = K_P;
+	this -> n = n;	
 
 }
 
