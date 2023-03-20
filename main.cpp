@@ -27,5 +27,7 @@ int main() {
 
 	solver S(c, p, K_P, n);
 
+	S.solve();
+
 	return 0;
 }

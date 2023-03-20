@@ -1,3 +1,4 @@
+#include <ctime>
 #include <iostream>
 #include "solver.h"
 
@@ -7,7 +8,14 @@ solver::solver(const vector<int>& c, const vector<int>& p, const int K_P, const 
 	{ answer.resize(n); this -> n = n; Max_c = 0; }
 
 void solver::solve()
-	{}
+{
+	srand( time(0) );
+	for (int i = 0; i < n; ++i) {
+		answer[i] = rand() % 2;
+		cout << answer[i] << " ";
+	}
+	cout << endl;
+}
 
 void solver::print_ans()
 {
