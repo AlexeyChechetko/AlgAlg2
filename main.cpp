@@ -29,5 +29,7 @@ int main() {
 
 	S.solve();
 
+	S.print_ans();
+
 	return 0;
 }

@@ -12,3 +12,5 @@ conditions::conditions(const vector<int>& c, const vector<int>& p, const int K_P
 
 }
 
+int conditions::get_ci(int i)
+	{ return c[i]; }
