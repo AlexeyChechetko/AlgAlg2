@@ -14,7 +14,7 @@ int main() {
 	vector<int> w; //вектор весов
 	int K;         //максимально допустимый вес
 	int n;         //размер входных данных(сколько товаров в магазине)
-	
+	/////////////efijogeijghetgho
 	cin >> n >> K;
 	v.resize(n);
 	w.resize(n);
