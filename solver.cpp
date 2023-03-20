@@ -15,16 +15,27 @@ int solver::f(const vector<int> a)
 	return sum;
 }
 
+int solver::pound(const vector<int> a)
+{
+	int sum = 0;
+	for (int i = 0; i < n; ++i)
+		sum += a[i] * C.get_pi(i);
+	return sum;
+}
+
 
 void solver::local_search_method()
 {
 	vector<int> ans_tmp;
+	ans_tmp.resize(n);
 	int i;
+	cout << "n = " << n << endl;
 	bool flag = true;
 	while (flag) {
 		for (i = 0; i < n; ++i) {
+			cout << "i = " << i << endl;
 			ans_tmp[i] = (ans_tmp[i] + 1) % 2;
-			if (f(ans_tmp) < f(answer)) {
+			if (f(ans_tmp) < f(answer) && pound(ans_tmp) < C.get_KP()) {
 				answer = ans_tmp;
 				break;
 			}
