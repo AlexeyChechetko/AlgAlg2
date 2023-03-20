@@ -1,16 +1,4 @@
 #include "conditions.h"
-#include "solver.h"
-// read conditions
-// 		Knapsack
-// solve the problem
-// 	class:
-// 		Solver
-// 			ctor(const Condition& )
-// 			void solve()
-// 			int answer()
-// 			const vector<int>&  solution()
-// print results
-// 	
 #include <vector>
 #include <iostream>
 
@@ -23,9 +11,9 @@ int main() {
 
 
 	vector<int> v; //вектор ценностей
-	vector<int> w;//вектор весов
-	int K; //максимально допустимый вес
-	int n;
+	vector<int> w; //вектор весов
+	int K;         //максимально допустимый вес
+	int n;         //размер входных данных(сколько товаров в магазине)
 	
 	cin >> n >> K;
 	v.resize(n);
@@ -35,11 +23,6 @@ int main() {
 	}
 
 	conditions the_cond(v, w, K);
-
-	solver the_sol(the_cond);
-	the_sol.solve();
-
-	the_sol.answer();
 
 	return 0;
 }

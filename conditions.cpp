@@ -1,4 +1,5 @@
 #include "conditions.h"
+
 using namespace std;
 
 conditions::conditions(const vector<int>& c, const vector<int>& w, const int K_W)
@@ -10,17 +11,3 @@ conditions::conditions(const vector<int>& c, const vector<int>& w, const int K_W
 
 }
 
-int conditions::get_n() 
-{
-	return c.max_size();
-}
-
-int conditions::get_K_W() 
-{
-	return K_W;
-}
-
-vector<int> conditions::get_c() 
-{
-	return c;
-}
