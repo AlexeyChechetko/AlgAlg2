@@ -9,7 +9,7 @@ using namespace std;
 int main() {
 
 
-	freopen("./input_knapsack/input1", "r", stdin);
+	freopen("./input_knapsack/input16", "r", stdin);
 
 
 	vector<int> c; //вектор ценностей
