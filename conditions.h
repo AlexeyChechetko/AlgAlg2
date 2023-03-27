@@ -1,18 +1,21 @@
+#ifndef CONDITIONS_H_INCLUDED
+#define CONDITIONS_H_INCLUDED
+
 #include <vector>
+
 using namespace std;
 
-#include "knapsack.h" 
-
-#ifndef _conditions_h_
-#define _conditions_h_
-
-class Conditions {
+class conditions {
 	public:
-		Conditions(const vector<int> & v, const vector<int> & w, int K) ;
-		bool is_good(Knapsack& knapsack); 
+		conditions(const vector<int>& c, const vector<int>& p, const int K_P, const int n);
+		int get_ci(int i);
+		int get_pi(int i);
+		int get_KP();
 	private:
-		vector<int> m_v;
-		vector<int> m_w;
-		int m_k;
+		vector<int> c;
+		vector<int> p;
+		int K_P;
+		int n;
 };
+
 #endif

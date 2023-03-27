@@ -1,14 +1,22 @@
-Conditions::Conditions(const vector<int> & v, const vector<int> & w, int K) {
-	m_v = v;
-	m_w = w;
-	m_k = K;
+#include "conditions.h"
+
+using namespace std;
+
+conditions::conditions(const vector<int>& c, const vector<int>& p, const int K_P, const int n)
+{
+
+	this -> c = c;
+	this -> p = p;
+	this -> K_P = K_P;
+	this -> n = n;	
+
 }
 
-bool Conditions::is_good(Knapsack& knapsack) {
-	int sum = 0;
-	for (int i = 0; i < m_v.size(); i++) {
-		sum += knapsack[i]*m_v[i];
-	}
-	return (sum < m_K);
+int conditions::get_ci(int i)
+	{ return c[i]; }
 
-}
+int conditions::get_pi(int i)
+	{ return p[i]; }
+
+int conditions::get_KP()
+	{ return K_P; }
