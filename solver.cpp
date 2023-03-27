@@ -34,7 +34,6 @@ void solver::local_search_method()
 	while (flag) {
 		cout << "while" << endl;
 		for (i = 0; i < n; ++i) {
-			cout << "i = " << i << endl;
 			ans_tmp[i] = (ans_tmp[i] + 1) % 2;
 			if (f(ans_tmp) < f(answer) && pound(ans_tmp) <= C.get_KP()) {
 				answer = ans_tmp;
