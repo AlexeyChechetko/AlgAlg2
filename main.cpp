@@ -12,10 +12,10 @@ int main() {
 	freopen("./input_knapsack/input18", "r", stdin);
 
 
-	vector<int> c; //вектор ценностей
-	vector<int> p; //вектор весов
-	int K_P;       //максимально допустимый вес
-	int n;         //размер входных данных(сколько товаров в магазине)
+	vector<int> c; 
+	vector<int> p; 
+	int K_P;      
+	int n;       
 	
 	cin >> n >> K_P;
 	c.resize(n);

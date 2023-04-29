@@ -14,13 +14,9 @@ class solver {
 		void local_search_method();
 		void print_ans();
 		int f(const vector<int> a);
-		int pound(const vector<int> a);
 	private:
 		conditions C;
 		knapsack K;
-		vector<int> answer;
-		int n;
-		int Max_c;
 };
 
 #endif

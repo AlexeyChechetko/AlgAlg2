@@ -5,6 +5,14 @@
 
 using namespace std;
 
+//c -- вектор ценностей
+//p -- вектор весов
+//K_P -- максимально допустимый вес товаров в рюкзаке
+//n -- размер входных данных(сколько товаров в магазине)
+//get_ci -- возвращает цену i товара
+//get_pi -- возвразает вес i товара
+//get_KP -- возвращает K_P
+
 class conditions {
 	public:
 		conditions(const vector<int>& c, const vector<int>& p, const int K_P, const int n);
