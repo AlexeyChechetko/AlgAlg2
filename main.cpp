@@ -9,7 +9,7 @@ using namespace std;
 int main() {
 
 
-	freopen("./input_knapsack/input18", "r", stdin);
+	freopen("./input_knapsack/input2", "r", stdin);
 
 
 	vector<Goods> g; 
@@ -28,6 +28,7 @@ int main() {
 
 	S.SA(m, n);
 
+	S.KC();
 
 	return 0;
 }

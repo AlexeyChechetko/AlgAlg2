@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cmath>
 #include <ctime>
 #include "solver.h"
@@ -24,12 +25,12 @@ void solver::gener_k0(const int n)
 	int i;
 	
 	for (i = 0; i < n; ++i)
-		{ K.add(i, C.get_gi(i).p); }	
+		{ K.add(i, C.get_gi(i).p, C.get_gi(i).c); }	
 
 	while (K.is_full())
 	{
 		i = rand() % n;
-		K.del(i, C.get_gi(i).p);
+		K.del(i, C.get_gi(i).p, C.get_gi(i).c);
 	}
 }
 
@@ -63,7 +64,7 @@ void solver::SA(int m, int n)
 	vector<int> s;
 	s.resize(n);
 	s = K.ret_k();
-
+	
 	vector<int> sp;
 	sp.resize(n);
 
@@ -77,6 +78,7 @@ void solver::SA(int m, int n)
 		for (int k = 0; k < n; ++k)
 		{
 			sp = N(s, k, n);
+			
 			Fp = f(sp, n);
 			
 			bernoulli_distribution distribution( exp((F - Fp) / T) );	
@@ -90,7 +92,14 @@ void solver::SA(int m, int n)
 
 			T = T_j(T);
 		}
-	}	
+	}
+
+	K.change_k(s);
 	
+}
+
+void solver::KC()
+{
+	cout << K.knapsack_cost() << endl;
 }
 
