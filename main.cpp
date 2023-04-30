@@ -12,24 +12,22 @@ int main() {
 	freopen("./input_knapsack/input18", "r", stdin);
 
 
-	vector<int> c; 
-	vector<int> p; 
+	vector<Goods> g; 
 	int K_P;      
 	int n;       
 	
 	cin >> n >> K_P;
-	c.resize(n);
-	p.resize(n);
-	for (int i = 0; i < n; i++) {
-		cin >> c[i] >> p[i];
-	}
+	g.resize(n);
+	for (int i = 0; i < n; i++) 
+		{ cin >> g[i].c >> g[i].p; }
 
 
-	solver S(c, p, K_P, n);
+	solver S(g, K_P, n);
 
-	S.solve();
+	int m = 1000;
 
-	S.print_ans();
+	S.SA(m, n);
+
 
 	return 0;
 }

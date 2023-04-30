@@ -2,26 +2,27 @@
 #define CONDITIONS_H_INCLUDED
 
 #include <vector>
+#include "goods.h"
 
 using namespace std;
 
-//c -- вектор ценностей
-//p -- вектор весов
+//g -- вектор товаров
 //K_P -- максимально допустимый вес товаров в рюкзаке
 //n -- размер входных данных(сколько товаров в магазине)
-//get_ci -- возвращает цену i товара
-//get_pi -- возвразает вес i товара
-//get_KP -- возвращает K_P
+//get_gi() -- возвращает i товар
+//get_KP() -- возвращает K_P
+//get_n() -- возвращает кол-о товаров 
+//max_c() -- вернет max цену товара
 
 class conditions {
 	public:
-		conditions(const vector<int>& c, const vector<int>& p, const int K_P, const int n);
-		int get_ci(int i);
-		int get_pi(int i);
+		conditions(const vector<Goods>& g, const int K_P, const int n);
+		Goods get_gi(int i);
 		int get_KP();
+		int get_n();
+		int max_c();
 	private:
-		vector<int> c;
-		vector<int> p;
+		vector<Goods> g;
 		int K_P;
 		int n;
 };
