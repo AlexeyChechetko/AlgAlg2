@@ -1,4 +1,4 @@
-#ifndef GOODS__H_INCLUDED
+#ifndef GOODS_H_INCLUDED
 #define GOODS_H_INCLUDED
 
 #include <iostream>

@@ -2,7 +2,7 @@
 
 using namespace std;
          
-conditions::conditions(const vector<Goods>& g, const int K_P, const int n)
+conditions::conditions(vector<Goods>& g, int K_P, int n)
 {
 
 	this -> g = g;
@@ -26,12 +26,14 @@ int conditions::get_n()
 	return n; 
 }
 
-/*int conditions::max_c()
+int conditions::max_c()
 {
 	int max = -1;
 
 	for (int i = 0; i < n; ++i)
-		{ max = (max < g[i].c) ? g[i].c : max; }
+	{
+		max = (max < g[i].c) ? g[i].c : max;
+	}
 
 	return max;
-}*/
+}

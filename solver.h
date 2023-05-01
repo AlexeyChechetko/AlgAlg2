@@ -11,16 +11,16 @@ using namespace std;
 //f() -- функция, минимум которой ищем         | общ. методы
 //gener_k0() -- генерируем начальное "решение" | общ. методы
 //SA(int m) -- метод имитации отжига; m -- параметр алгоритма, а именно кол-о T_i в последовательности
-//N(s, k) -- функция окр-и
-//T_j(T) -- генератор последовательности T_j
+//N() -- функция окр-и
+//T_j() -- генератор последовательности T_j
 
 class solver {
 	public:
-		solver(const vector<Goods>& g, const int K_P, const int n);
+		solver(vector<Goods>& g, int K_P, int n);
 		void SA(int m);
-		int f(const vector<int> k);
+		int f(knapsack& kp);
 		void gener_k0();
-		vector<int> N(vector<int> s, int k);
+		void N(knapsack& kp, int j);
 		double T_j(double T);
 	private:
 		conditions C;

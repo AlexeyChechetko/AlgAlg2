@@ -15,7 +15,7 @@ knapsack::knapsack(int n, int K_P)
 		
 }
 
-void knapsack::add(int j, int p_j, int c_j)
+void knapsack::add(int j, Goods g_j)
 { 
 	if (k[j] == 1)
 	{
@@ -24,12 +24,12 @@ void knapsack::add(int j, int p_j, int c_j)
 	else
 	{
 		k[j] = 1; 
-		P += p_j; 
-		C += c_j; 
+		P += g_j.p; 
+		C += g_j.c; 
 	}
 }
 
-void knapsack::del(int j, int p_j, int c_j)
+void knapsack::del(int j, Goods g_j)
 {
 	if (k[j] == 0)
 	{
@@ -38,8 +38,8 @@ void knapsack::del(int j, int p_j, int c_j)
 	else
 	{
 		k[j] = 0; 
-		P -= p_j; 
-		C -= c_j; 
+		P -= g_j.p; 
+		C -= g_j.c; 
 	}
 }
 
@@ -48,3 +48,22 @@ bool knapsack::is_full()
 	return P >= P_max; 
 }
 
+int knapsack::get_P()
+{
+	return P;
+}
+
+int knapsack::get_C()
+{
+	return C;
+}
+
+vector<int> knapsack::get_k()
+{
+	return k;
+}
+
+void knapsack::reset(vector<int> a)
+{
+	k = a;
+}

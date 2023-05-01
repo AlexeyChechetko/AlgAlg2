@@ -9,7 +9,7 @@ using namespace std;
 int main() {
 
 
-	freopen("./input_knapsack/input1", "r", stdin);
+	freopen("./input_knapsack/input10", "r", stdin);
 
 
 	vector<Goods> g; 
@@ -24,11 +24,9 @@ int main() {
 
 	solver S(g, K_P, n);
 
-	int m = 1000;
+	int m = 100;
+	S.SA(m);
 
-	S.SA(m, n);
-
-	S.KC();
 
 	return 0;
 }

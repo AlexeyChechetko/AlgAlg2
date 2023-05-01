@@ -6,22 +6,14 @@
 
 using namespace std;
 
-solver::solver(const vector<Goods>& g, const int K_P, const int n) : C(g, K_P, n), K(n, K_P)
+solver::solver(vector<Goods>& g, int K_P, int n) : C(g, K_P, n), K(n, K_P)
 { 
-	gener_k0(); 
+
 }
 
-int solver::f(const vector<int> k)
+int solver::f(knapsack& kp)
 {
-	int i;
-	int sum = 0;
-	
-	for (i = 0; i < C.get_n(); ++i)
-	{ 
-		sum -= k[i] * C.get_gi(i).c; 
-	}
-
-	return sum;
+	return -kp.get_C();
 }
 
 void solver::gener_k0()
@@ -32,25 +24,29 @@ void solver::gener_k0()
 	
 	for (i = 0; i < C.get_n(); ++i)
 	{ 
-		K.add(i, C.get_gi(i).p, C.get_gi(i).c); 
+		K.add(i, C.get_gi(i)); 
 	}	
 
 	while (K.is_full())
 	{
 		i = rand() % C.get_n();
-		K.del(i, C.get_gi(i).p, C.get_gi(i).c);
+		K.del(i, C.get_gi(i));
 	}
 }
 
-vector<int> solver::N(vector<int> s, int j)
+void solver::N(knapsack& kp, int j)
 {
-	vector<int> sp;
-	sp.resize(C.get_n());
-	sp = s;
+	kp.reset(K.get_k());
 
-	sp[j] = ((sp[j] + 1) % 2);
+	if (kp.get_k()[j] == 0)
+	{
+		kp.add(j, C.get_gi(j));
+	}
+	else
+	{
+		kp.del(j, C.get_gi(j));
+	}
 
-	return sp;
 }
 
 double solver::T_j(double T)
@@ -60,34 +56,41 @@ double solver::T_j(double T)
 	return ( f_min + f * (f_max - f_min) ) * T;
 }
 
-void solver::SA(int m, int n)
+void solver::SA(int m)
 {
 	srand( time(0) );
 
 	int i, j;	
-
-	vector<int> sp;
-	sp.resize(n);
 	
+	gener_k0();
+	
+	knapsack kp(C.get_n(), C.get_KP());	
+	kp.reset(K.get_k());
+	
+
 	default_random_engine generator;
 
-	int F = f(K.get_k()), Fp = 0;
+	int F = f(K);
+        int Fp = 0;
 
 	double T = C.max_c();
 
 	for (i = 0; i < m; ++i) 
 	{
-		for (j = 0; j < n; ++j)
+		for (j = 0; j < C.get_n(); ++j)
 		{
-			sp = N(s, k, n);
+			N(kp, j);
 			
-			Fp = f(sp, n);
+			if (kp.is_full())
+				continue;
+
+			Fp = f(kp);
 			
 			bernoulli_distribution distribution( exp((F - Fp) / T) );	
 			
 			if ( (Fp < F) || ( (Fp - F < T) && distribution(generator) ) )
 			{
-				s = sp;
+				K.reset(kp.get_k());
 				F = Fp;
 				break;
 			}
@@ -96,7 +99,9 @@ void solver::SA(int m, int n)
 		}
 	}
 
-	K.change_k(s);
+	cout << "cost: " << K.get_C() << endl;
+	cout << "pound: " << K.get_P() << endl;
+
 	
 }
 
