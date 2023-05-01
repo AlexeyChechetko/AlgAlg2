@@ -5,77 +5,79 @@
 #include <random>
 
 using namespace std;
-using ll = long long;
 
 solver::solver(const vector<Goods>& g, const int K_P, const int n) : C(g, K_P, n), K(n, K_P)
-	{ gener_k0(n); }
+{ 
+	gener_k0(); 
+}
 
-int solver::f(const vector<int> k, const int n)
+int solver::f(const vector<int> k)
 {
-	ll sum = 0;
-	for (int i = 0; i < n; ++i)
-		{ sum -= k[i] * C.get_gi(i).c; }
+	int i;
+	int sum = 0;
+	
+	for (i = 0; i < C.get_n(); ++i)
+	{ 
+		sum -= k[i] * C.get_gi(i).c; 
+	}
+
 	return sum;
 }
 
-void solver::gener_k0(const int n)
+void solver::gener_k0()
 {
 	srand( time(0) );
 
 	int i;
 	
-	for (i = 0; i < n; ++i)
-		{ K.add(i, C.get_gi(i).p, C.get_gi(i).c); }	
+	for (i = 0; i < C.get_n(); ++i)
+	{ 
+		K.add(i, C.get_gi(i).p, C.get_gi(i).c); 
+	}	
 
 	while (K.is_full())
 	{
-		i = rand() % n;
+		i = rand() % C.get_n();
 		K.del(i, C.get_gi(i).p, C.get_gi(i).c);
 	}
 }
 
-vector<int> solver::N(vector<int> s, int k, int n)
+vector<int> solver::N(vector<int> s, int j)
 {
 	vector<int> sp;
-	sp.resize(n);
+	sp.resize(C.get_n());
 	sp = s;
 
-	sp[k] = ((sp[k] + 1) % 2);
+	sp[j] = ((sp[j] + 1) % 2);
 
 	return sp;
 }
 
 double solver::T_j(double T)
 {
-	double f_min = 0.7;
-	double f_max = 0.9;
+	double f_min = 0.7, f_max = 0.9,  f = (double)rand() / RAND_MAX;
 
-	double f = (double)rand() / RAND_MAX;
-	
 	return ( f_min + f * (f_max - f_min) ) * T;
 }
 
 void solver::SA(int m, int n)
 {
-	default_random_engine generator;
-	
 	srand( time(0) );
-	
-	vector<int> s;
-	s.resize(n);
-	s = K.ret_k();
-	
+
+	int i, j;	
+
 	vector<int> sp;
 	sp.resize(n);
+	
+	default_random_engine generator;
 
-	int F = f(s, n);
-	int Fp = 0;
+	int F = f(K.get_k()), Fp = 0;
 
 	double T = C.max_c();
 
-	for (int i = 1; i < m; ++i) 
+	for (i = 0; i < m; ++i) 
 	{
-		for (int k = 0; k < n; ++k)
+		for (j = 0; j < n; ++j)
 		{
 			sp = N(s, k, n);
 			
@@ -98,8 +100,4 @@ void solver::SA(int m, int n)
 	
 }
 
-void solver::KC()
-{
-	cout << K.knapsack_cost() << endl;
-}
 

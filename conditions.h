@@ -12,7 +12,6 @@ using namespace std;
 //get_gi() -- возвращает i товар
 //get_KP() -- возвращает K_P
 //get_n() -- возвращает кол-о товаров 
-//max_c() -- вернет max цену товара
 
 class conditions {
 	public:
@@ -20,7 +19,6 @@ class conditions {
 		Goods get_gi(int i);
 		int get_KP();
 		int get_n();
-		int max_c();
 	private:
 		vector<Goods> g;
 		int K_P;

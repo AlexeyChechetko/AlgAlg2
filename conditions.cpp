@@ -12,15 +12,21 @@ conditions::conditions(const vector<Goods>& g, const int K_P, const int n)
 }
 
 Goods conditions::get_gi(int i)
-	{ return g[i]; }
+{ 
+	return g[i]; 
+}
 
 int conditions::get_KP()
-	{ return K_P; }
+{ 
+	return K_P; 
+}
 
 int conditions::get_n()
-	{ return n; }
+{ 
+	return n; 
+}
 
-int conditions::max_c()
+/*int conditions::max_c()
 {
 	int max = -1;
 
@@ -28,4 +34,4 @@ int conditions::max_c()
 		{ max = (max < g[i].c) ? g[i].c : max; }
 
 	return max;
-}
+}*/

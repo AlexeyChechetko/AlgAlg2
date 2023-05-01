@@ -4,7 +4,6 @@
 #include <vector>
 
 using namespace std;
-using ll = long long;
 
 //k -- вектор из 0 и 1, 0 -- товар не в рюкзаке, 1 -- товар в рюкзаке
 //P -- текущий вес товаров в рюкзаке
@@ -12,7 +11,6 @@ using ll = long long;
 //add() -- добавить товар в рюкзак
 //del() -- удалить товар из рюкзака
 //is_full() -- true, если рюкзак заполнен или переполнен; false, если еще есть место
-//ret_k() -- возвращает вектор k
 
 class knapsack {
 	public:
@@ -20,14 +18,11 @@ class knapsack {
 		void add(int j, int p_j, int c_j);
 		void del(int j, int p_j, int c_j);
 		bool is_full();
-		vector<int> ret_k();
-		void change_k(vector<int> s);
-		ll knapsack_cost();
 	private:
 		vector<int> k;
 		int P_max;
 		int P;
-		ll C;
+		int C;
 };
 
 #endif
