@@ -63,7 +63,9 @@ vector<int> knapsack::get_k()
 	return k;
 }
 
-void knapsack::reset(vector<int> a)
+void knapsack::reset(vector<int> a, int pg, int cg)
 {
 	k = a;
+	P = pg;
+	C = cg;
 }

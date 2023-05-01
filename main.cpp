@@ -9,8 +9,8 @@ using namespace std;
 int main() {
 
 
-	freopen("./input_knapsack/input10", "r", stdin);
-
+	freopen("./input_knapsack/input18", "r", stdin);
+	freopen("./output_knapsack/output18", "a", stdout);
 
 	vector<Goods> g; 
 	int K_P;      
@@ -27,6 +27,7 @@ int main() {
 	int m = 100;
 	S.SA(m);
 
+	S.ans_correct();
 
 	return 0;
 }

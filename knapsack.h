@@ -26,7 +26,7 @@ class knapsack {
 		int get_P();
 		int get_C();
 		vector<int> get_k();
-		void reset(vector<int> a);
+		void reset(vector<int> a, int pg, int cg);
 	private:
 		vector<int> k;
 		int P_max;

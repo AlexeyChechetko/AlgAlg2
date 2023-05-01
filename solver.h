@@ -22,6 +22,7 @@ class solver {
 		void gener_k0();
 		void N(knapsack& kp, int j);
 		double T_j(double T);
+		void ans_correct();
 	private:
 		conditions C;
 		knapsack K;

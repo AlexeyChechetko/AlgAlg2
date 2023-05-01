@@ -36,7 +36,7 @@ void solver::gener_k0()
 
 void solver::N(knapsack& kp, int j)
 {
-	kp.reset(K.get_k());
+	kp.reset(K.get_k(), K.get_P(), K.get_C());
 
 	if (kp.get_k()[j] == 0)
 	{
@@ -65,7 +65,7 @@ void solver::SA(int m)
 	gener_k0();
 	
 	knapsack kp(C.get_n(), C.get_KP());	
-	kp.reset(K.get_k());
+	kp.reset(K.get_k(), K.get_P(), K.get_C());
 	
 
 	default_random_engine generator;
@@ -90,13 +90,14 @@ void solver::SA(int m)
 			
 			if ( (Fp < F) || ( (Fp - F < T) && distribution(generator) ) )
 			{
-				K.reset(kp.get_k());
+				K.reset(kp.get_k(), kp.get_P(), kp.get_C());
 				F = Fp;
 				break;
 			}
 
-			T = T_j(T);
 		}
+	
+		T = T_j(T);
 	}
 
 	cout << "cost: " << K.get_C() << endl;
@@ -105,4 +106,28 @@ void solver::SA(int m)
 	
 }
 
+void solver::ans_correct()
+{
+	int pg = 0;
+	int cg = 0;
+
+	for (int i = 0; i < C.get_n(); ++i)
+	{
+		if (K.get_k()[i])
+		{
+			pg += C.get_gi(i).p;
+			cg += C.get_gi(i).c;
+
+		}
+	}
+	
+	//cout << "pg = " << pg << endl;
+	//cout << "cg = " << cg << endl;
+
+	if (pg == K.get_P() && cg == K.get_C())
+	{
+		cout << "Okey!" << endl;
+	}
+	cout << endl;
+}
 
